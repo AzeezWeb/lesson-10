@@ -1,0 +1,65 @@
+
+.Users {
+  width: 400px;
+  padding: 10px;
+  border: 1px solid #999;
+  box-sizing: border-box;
+  margin: 10px;
+  border-radius: 5px;
+  position: relative;
+}
+
+
+.Name {
+  font-size: 28px;
+}
+
+.UserName {
+  font-size: 22px;
+  font-weight: 500;
+  color: #999;
+  margin-bottom: 25px;
+
+}
+
+.UserData {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 0;
+  border-bottom: 1px solid #d0c6c6;
+}
+
+
+span:first-of-type {
+  color: #999;
+  text-align: start;
+}
+
+span:last-of-type {
+  text-align: center;
+}
+
+
+button {
+  color: #fff;
+  font-size: 18px;
+  display: none;
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%);
+  padding: 10px 20px;
+  border-radius: 8px;
+  border: 3px solid #ef9b91;
+  background-color: #EA200B;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #f82b14;
+}
+
+.Users:hover button {
+  display: block;
+}
+
