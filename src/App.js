@@ -1,46 +1,46 @@
 import { useState } from 'react';
+import { useEffect } from 'react';
 import './App.css';
 import User from './Users/User';
-import useUsers from './Users/useUsers';
 
 
 function App() {
 
-  const {data, loading} = useUsers()
-  const [users, setUsers] = useState(data)
-  
-  const AddingUser = () => {
+  const [data, setData] = useState([]);
 
-    const deleteUserHandler = (userIndex) => {
-      setUsers(data)
-      console.log(users);
-  }
+  useEffect( ( ) => {
+    fetch('https://jsonplaceholder.typicode.com/users')
+      .then((res) => res.json())
+      .then((data) => {
+        setData(data)
+      })
+    },[] )
+    
+    const deleteUserHandler = (id) => {
+        setData(data.filter((item) => item.id !== id))
+    }
 
-  
-   return ( data.map((item, index) => {
-      return (
-          <User 
-          key={item.id}
-          fullName={item.name}
-          userName={item.username}
-          company={item.company.name}
-          email={item.email}
-          phone={item.phone}
-          website={item.website}
-          click={ () => deleteUserHandler(index)}
-           />
-        
-      )
-    })
-  )}
 
-  return (
-    <div className="App">
-     { loading ? <h1>malumot kelmadi</h1> 
-               : AddingUser()
-     }
+  return ( 
+    <div className='App'>
+      {data.map((item, index) => {
+    return (
+        <User 
+        id={item.id}
+        key={item.id}
+        fullName={item.name}
+        userName={item.username}
+        company={item.company.name}
+        email={item.email}
+        phone={item.phone}
+        website={item.website}
+        click={ () => deleteUserHandler(item.id)}
+         />
+      
+    )
+  })}
     </div>
-  );
+)
 }
 
 export default App;

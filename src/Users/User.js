@@ -4,7 +4,7 @@ import clases from './User.module.css'
 function User(props) {
 
   return ( 
-    <div className={clases.Users}> 
+    <div className={clases.Users} id={props.id}> 
       <h2 className={clases.Name}> {props.fullName}</h2>
       <p className={clases.UserName}> {props.userName}</p>
       <p className={clases.UserData}> <span>COMPANY</span>  <span>{props.company}</span> </p>
